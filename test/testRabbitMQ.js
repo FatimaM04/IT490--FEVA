@@ -1,4 +1,4 @@
-const { connectRabbitMQ, sendMessage } = require("../config/rabbitmq");
+const { connectRabbitMQ, sendMessage } = require("../Backend/config/rabbitmq");
 
 async function testRabbitMQ() {
     try {
