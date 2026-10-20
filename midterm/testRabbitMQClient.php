@@ -14,10 +14,13 @@ else
   $msg = "test message";
 }
 
+function sendMessage($username, $email, $password){
+	$request['username'] = $username;
+	$request['password'] = $password;
+}
+
 $request = array();
 $request['type'] = "Login";
-$request['username'] = "steve";
-$request['password'] = "password";
 $request['message'] = $msg;
 $response = $client->send_request($request);
 //$response = $client->publish($request);

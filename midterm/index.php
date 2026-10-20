@@ -2,10 +2,9 @@
 <html>
 <head>
     <title>FEVA</title>
-<script src="/config/rabbitmq.js">
+<script src="testRabbitMQClient.php">
 console.log("something");
-connectRabbitMQ();
-const button = document.getElementById("submit").addListenerEvent("click",sendMessage("username",document.getElementById("email").value));
+const button = document.getElementById("submit").addListenerEvent("click",sendMessage(document.getElementById("email").value,document.getElementById("pasword").value));
     </script>
 </head>
 <body>
