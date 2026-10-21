@@ -21,7 +21,7 @@ function sendMessage($username, $email, $password){
 
 $request = array();
 $request['type'] = "Login";
-$request['message'] = $msg;
+$request['message'] = $request['username'," ", $requeset['password'];
 $response = $client->send_request($request);
 //$response = $client->publish($request);
 

@@ -8,7 +8,7 @@ function doLogin($username,$password)
 {
     // lookup username in databas
 	// check password
-	console.log("pretend to look something up in the imaginary database");
+	echo "am i here".PHP_EOL;
     return true;
     //return false if not valid
 }
@@ -32,7 +32,8 @@ function requestProcessor($request)
   switch ($request['type'])
   {
     case "login":
-      return doLogin($request['username'],$request['password']);
+	    echo "1 tried to login".PHP_EOL;
+	    return doLogin($request['username'],$request['password']);
     case "validate_session":
       return doValidate($request['sessionId']);
   }
