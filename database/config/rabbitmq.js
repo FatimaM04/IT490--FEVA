@@ -9,7 +9,7 @@ async function connectRabbitMQ() {
 
         channel = await connection.createChannel();
 
-        await channel.assertQueue("auth_queue", {
+        await channel.assertQueue("auth.queue", {
             durable: true
         });
 
@@ -27,7 +27,7 @@ async function sendMessage(message) {
     }
 
     channel.sendToQueue(
-        "auth_queue",
+        "auth.queue",
         Buffer.from(JSON.stringify(message)),
         { persistent: true }
     );
