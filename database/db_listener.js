@@ -44,9 +44,12 @@ async function startListener() {
                     
                         // Added this print statement so we can see exactly what is sent back
                         console.log('Sent response:', responseString);
-                }
-            } 
+                    }
+                }catch (parseErr){
+                    console.error('Error processing message payload:', parseErr.message);
+                } finally {
                 channel.ack(msg);
+                }
             }
         });
     } catch (error){
