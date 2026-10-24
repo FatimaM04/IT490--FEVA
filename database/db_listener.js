@@ -30,7 +30,7 @@ async function startListener() {
                         let response = {};
 
                     // Check if user exists and password matches
-                        if (rows.length > 0 && rows[0].password === data.password) {
+                        if (rows.length > 0 && rows[0].password_hash === data.password) {
                             const token = "token_" + Math.random().toString(36).substring(7);
                             response = { status: 'success', token: token, message: 'Login OK' };
                         } else {
