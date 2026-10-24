@@ -5,11 +5,9 @@ async function testRabbitMQ() {
         await connectRabbitMQ();
 
         const message = {
-            type: "TEST_MESSAGE",
+            action: "login",
             username: "testuser",
-            email: "test@example.com",
-            message: "Hello RabbitMQ!",
-            timestamp: new Date().toISOString()
+            password: "password123"
         };
 
         await sendMessage(message);
