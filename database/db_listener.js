@@ -24,7 +24,6 @@ async function startListener() {
                     const data = JSON.parse(msg.content.toString());
                     console.log('Receive request:', data); 
 
-<<<<<<< HEAD
                 let response = {};
 
                 // 1. LOGIN
@@ -69,7 +68,6 @@ async function startListener() {
                 channel.sendToQueue('auth.response', Buffer.from(responseString));
                 console.log('Sent response:', responseString);
                 
-=======
                     if (data.action === 'login') {
                         const [rows] = await db.execute('SELECT * FROM users WHERE username = ?', [data.username]);
 
@@ -94,7 +92,6 @@ async function startListener() {
                 }catch (parseErr){
                     console.error('Error processing message payload:', parseErr.message);
                 } finally {
->>>>>>> 49faf39730bb62cf91ab774faf379105f9be232e
                 channel.ack(msg);
                 }
             }
