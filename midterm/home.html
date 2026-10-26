@@ -4,6 +4,13 @@
 	<title>FEVA</title>
 </head>
 <!--<link rel="stylesheet" type="text/css" href="styles.css">-->
+<script>
+	const thisToken = localStorage("token");
+	if (thisToken === null){
+
+		window.location.href = "index.php"
+	}
+</script>
 <body>
 	<h1>Welcome To FEVA</h1>
 </body>
