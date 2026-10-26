@@ -31,7 +31,7 @@ async function startListener() {
                         // Make sure your MySQL column is actually named 'password' here!
                         const [rows] = await db.execute('SELECT * FROM users WHERE username = ?', [data.username]);
 
-                        if (rows.length > 0 && rows[0].password === data.password) {
+                        if (rows.length > 0 && rows[0].password_hash === data.password) {
                             const token = "token_" + Math.random().toString(36).substring(7);
                             
                             // Save the token to the database!
@@ -49,7 +49,7 @@ async function startListener() {
                         if (existing.length > 0) {
                             response = { status: 'failure', message: 'User already exists' };
                         } else {
-                            await db.execute('INSERT INTO users (username, password) VALUES (?, ?)', [data.username, data.password]);
+                            await db.execute('INSERT INTO users (username, password_hash) VALUES (?, ?)', [data.username, data.password]);
                             response = { status: 'success', message: 'User registered' };
                         }
                     }
