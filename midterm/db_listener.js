@@ -11,7 +11,7 @@ async function startListener() {
         });
         console.log('Connected to the MYSQL');
         
-        const conn = await amqp.connect('amqp://fnm:1234@10.214.17.73:5672/');
+        const conn = await amqp.connect('amqp://test:test@127.0.0.1:5672/');
         const channel = await conn.createChannel();
         
         await channel.assertQueue('auth.queue', {durable:true});

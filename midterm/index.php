@@ -2,19 +2,18 @@
 <html>
 <head>
     <title>FEVA</title>
-<script src="testRabbitMQClient.php">
-string token;
-int ttl = (86400 * 1000) * 7;
+<script>
+let token;
+let ttl = (86400 * 1000) * 7;
 const now = new Date();
 
 const tokenData = {
-	value : token;
-	expiry : now.getTime() + ttl;
-}
+	value : token,
+	expiry : now.getTime() + ttl
+};
 
-localStorage.setItem("token",tokenData);
+localStorage.setItem("token",JSON.stringify(tokenData));
 
-const button = document.getElementById("submit").addListenerEvent("click",sendLogin(document.getElementById("username).value,document.getElementById("pasword").value));
     </script>
 </head>
 <body>
@@ -37,6 +36,9 @@ const button = document.getElementById("submit").addListenerEvent("click",sendLo
 			<div id="textResponse">awaiting response</div>
 			<div id ="register">
 				<a href="register.php">Click here to register</a>
+			</div>
+			<div id="randomRedirect">
+			     <a href="about.php">I'm not here to log in</a>
 			</div>
             </main>
         </section>

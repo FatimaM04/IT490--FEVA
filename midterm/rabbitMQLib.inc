@@ -33,7 +33,7 @@ class rabbitMQServer
 			$this->auto_delete = $this->machine[$server]["AUTO_DELETE"];
 		}
 		$this->exchange = $this->machine[$server]["EXCHANGE"];
-		$this->queue = $this->machine[$server]["QUEUE"];
+		$this->queue = $this->machine[$server]["QUEUE"]; 
 	}
 
 	function process_message($msg)
@@ -73,7 +73,7 @@ class rabbitMQServer
 
 			$conn_queue = new AMQPQueue($channel);
 			$conn_queue->setName($msg->getReplyTo());
-			$replykey = $this->routing_key;
+			$replykey = $this->routing_key.".response";
 			$conn_queue->bind($exchange->getName(),$replykey);
 			$exchange->publish(json_encode($response),$replykey,AMQP_NOPARAM,array('correlation_id'=>$msg->getCorrelationId()));
 
@@ -203,7 +203,6 @@ class rabbitMQClient
 
 			$conn = new AMQPConnection($params);
 			$conn->connect();
-
 			$channel = new AMQPChannel($conn);
 
 			$exchange = new AMQPExchange($channel);
@@ -211,8 +210,8 @@ class rabbitMQClient
       $exchange->setType($this->exchange_type);
 
       $callback_queue = new AMQPQueue($channel);
-      $callback_queue->setName($this->queue."_response");
-      $callback_queue->declare();
+      $callback_queue->setName($this->queue);
+      $callback_queue->declare(true);
 			$callback_queue->bind($exchange->getName(),$this->routing_key.".response");
 
 			$this->conn_queue = new AMQPQueue($channel);

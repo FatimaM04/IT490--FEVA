@@ -21,6 +21,7 @@
 		<input type="submit" id="register" value="register">
 	    </div>
 	</form>
+	<a href="index.php">Go Back To Login</a>
     </main>	
 </body>
 </html>
