@@ -1,6 +1,5 @@
 #!/usr/bin/php
 <?php
-file_put_contents("/tmp/php-debug.log","PHP START", FILE_APPEND);
 require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
@@ -17,7 +16,7 @@ else
   //$msg = "something went wrong, no message to send";
 }
 
-if (isset($_POST)){
+if (!isset($_POST)) return;
 if (!isset($_POST["username"])) return;
 if (!isset($_POST["password"])) return;
 if (!isset($_POST["type"])) return;
@@ -45,14 +44,11 @@ if ($type == "register"){
 	$request["token"] = $token;
 }
 $request['message'] = $msg;
-$response = $client->send_request($request);
-$response = $client->publish($request);
+//$response = $client->send_request($request);
+//$response = $client->publish($request);
 //$client->process_response($response);
 //echo "client received response: ".PHP_EOL;
 //^this was your last change
 echo "\n\n";
-} else {
-echo "somethings horribly wrong here";
-}
 echo $argv[0]." END".PHP_EOL;
 

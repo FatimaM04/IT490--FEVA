@@ -19,7 +19,7 @@ localStorage.setItem("token",JSON.stringify(tokenData));
 <body>
     <section>
             <main>
-                <h1>FEVA testing login page</h1>
+                <h1>Log in to FEVA</h1>
                     <form name="login" action="testRabbitMQClient.php" method="post">
                         <div id="loginBox">
                             <label for="username">Username</label>
